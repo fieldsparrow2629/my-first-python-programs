@@ -4,9 +4,31 @@ import random
 items = []
 global health
 health = 10
+goblin = [2,8]
 
 print('You find yourself in a dark dungeon, with no idea where you are.')
 
+#battle function
+def fight(monster):
+    
+    global health
+    print('Battle Start!')
+
+    while (health > 0 and monster[1] > 0):
+        if 'sword' in items:
+            monster[1] -= 5
+        else:
+            monster[1] -= 1
+            
+        health -= monster[0]
+    if health > 0:
+        print('you win the battle!')
+    else:
+        print('you lose')
+        
+        
+    
+    
 #very first room
 def room_1():
     print('There are two doors, which one will you enter?')
@@ -27,13 +49,7 @@ def room_2():
 
     choice = input()
     if choice == 'fight':
-              if 'sword' not in items:
-                print('You dont have a weapon, you take 5 damage!!')
-                global health
-                health -= 5
-              else:
-                print('You kill the goblin and proceed to the next room...')
-                room_4()
+        fight(goblin)
               
     elif choice == 'sneak':
         if random.randint(0,9) > 7:
