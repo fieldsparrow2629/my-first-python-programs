@@ -78,7 +78,7 @@ def room_2():
         room_1()
                 
     else:
-        print('Not an option, try again')
+        print('Not an option, try again.')
         room_2()
         
 
@@ -100,13 +100,13 @@ def room_3():
 
 #room after the goblin
 def room_4():
-    print('You enter the room, and see three doors ahead of you')
-    print('which door will you try?')
+    print('You enter the room, and see three doors ahead of you...')
+    print('Which door will you try?')
     print('Left? Middle? Right?')
     choice = input()
     if choice == 'left':
         if 'key' in items:
-            print('you use your key to unluck the door, and proceed to the next room')
+            print('You use your key to unluck the door, and proceed to the next room')
             # go to room 5
             
     
