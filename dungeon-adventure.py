@@ -1,5 +1,6 @@
 #the dungeon adventure
 import random
+import time
 
 items = []
 global health
@@ -17,18 +18,25 @@ def fight(monster):
     while (health > 0 and monster[1] > 0):
         if 'sword' in items:
             monster[1] -= 5
+            print('You attack and deal 5 dmg to the monster!')
+            time.sleep(2)
+            if monster[1] <= 0:
+                break
         else:
             monster[1] -= 1
+            print('You attack and deal 1 dmg to the monster!')
+            time.sleep(2)
             
         health -= monster[0]
+        print('The monster attacks and deals ' + str(monster[0]) + ' to you!')
+        time.sleep(2)
+        
     if health > 0:
-        print('you win the battle!')
+        print('You win the battle!') 
     else:
-        print('you lose')
+        print('You lose')
         
-        
-    
-    
+         
 #very first room
 def room_1():
     print('There are two doors, which one will you enter?')
@@ -50,18 +58,21 @@ def room_2():
     choice = input()
     if choice == 'fight':
         fight(goblin)
-              
+        print('You proceed to the next room...')
+        room_4()
+           
     elif choice == 'sneak':
         if random.randint(0,9) > 7:
             print('You manage to sneak past the goblin, and proceed to the next room...')
             room_4()
             
-                
         else:
             print('You failed to sneak past the goblin.')
             print('He deals 2 damage to you!!')
-            health -= 2
             room_2()
+            global health
+            health = 0
+            
     elif choice == 'leave':
         print('You leave the room...')
         room_1()
